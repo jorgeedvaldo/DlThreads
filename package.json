@@ -1,0 +1,15 @@
+{
+  "name": "dlthreads",
+  "version": "1.0.0",
+  "description": "A multimedia content downloader from the Threads social network",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "puppeteer": "^20.8.1"
+  }
+}
