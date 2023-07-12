@@ -35,7 +35,10 @@ app.get('/', (req, res) => {
         FinalUrl = secondImgSrc;
         //res.send(secondImgSrc + ' Hello, World! ' + req.query.postid);
         res.setHeader('Content-Type', 'application/json');
-        res.end(JSON.stringify({ url: FinalUrl }));
+        res.end(JSON.stringify({ 
+          url: FinalUrl,
+          status: true
+        }));
       } else {
         console.log('Não há segundo elemento <img> na página.');
       }
