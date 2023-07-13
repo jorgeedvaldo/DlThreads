@@ -14,14 +14,14 @@
                 <div>
                     <a href="#" class="text-gray-900 hover:text-gray-700 px-4">Blog</a>
                     <div class="relative inline-block">
-                        <button class="text-gray-900 hover:text-gray-700 px-4 py-2 rounded cursor-pointer">
+                        <button class="text-gray-900 hover:text-gray-700 px-4 py-2 rounded cursor-pointer dropdown-button">
                             Language
                             <svg class="h-4 w-4 inline-block ml-1" viewBox="0 0 20 20" fill="currentColor">
                                 <path fill-rule="evenodd" d="M10 12a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
                                 <path d="M2 10a8 8 0 1116 0 8 8 0 01-16 0zm8-6a6 6 0 100 12 6 6 0 000-12z" />
                             </svg>
                         </button>
-                        <ul class="absolute hidden bg-white text-gray-700 pt-1">
+                        <ul class="absolute hidden bg-white text-gray-700 pt-1 dropdown-menu">
                             <li>
                                 <a href="#" class="block px-4 py-2 hover:bg-gray-200">English</a>
                             </li>
@@ -41,7 +41,14 @@
                 <h2 class="text-3xl font-bold text-white mb-4">Threads Video Download</h2>
                 <p class="text-gray-100 mb-8">Download Video Threads, Photo online</p>
                 <form class="flex items-center">
-                    <input type="text" placeholder="Enter Threads post URL" class="w-full rounded-l px-4 py-2 outline-none focus:ring-2 focus:ring-blue-500">
+                    <div class="relative w-full">
+                        <input type="text" placeholder="Enter Threads post URL" class="w-full rounded-l px-4 py-2 outline-none focus:ring-2 focus:ring-blue-500 url-input" value="">
+                        <button type="button" class="absolute right-0 top-0 bottom-0 px-3 flex items-center bg-gray-200 rounded-r paste-button">
+                            <svg class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                            </svg>
+                        </button>
+                    </div>
                     <button class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-r">Download</button>
                 </form>
             </div>
@@ -115,5 +122,26 @@
             <p class="text-center text-gray-500">© 2023 DlThreads. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        const pasteButton = document.querySelector('.paste-button');
+
+        pasteButton.addEventListener('click', async () => {
+        try {
+            const text = await navigator.clipboard.readText()
+            document.querySelector('.url-input').value += text;
+            console.log('Text pasted.');
+        } catch (error) {
+            console.log('Failed to read clipboard');
+        }
+        });
+
+        const dropdownButton = document.querySelector('.dropdown-button');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+
+        dropdownButton.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('hidden');
+        });
+    </script>
 </body>
 </html>
